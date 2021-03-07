@@ -19,17 +19,25 @@ export class Alert extends Component {
         alert.error(`Email: ${error.msg.email.join()}`);
       }
       if (error.msg.message) {
-        alert.error(`Email: ${error.msg.message.join()}`);
+        alert.error(`Message: ${error.msg.message.join()}`);
+      }
+      if (error.msg.non_field_errors) {
+        alert.error(error.msg.non_field_errors.join());
+      }
+      if (error.msg.username) {
+        alert.error(error.msg.username.join());
       }
     }
+
     if (message !== prevProps.message) {
       if (message.leadAdded) {
         alert.success(message.leadAdded);
       }
-    }
-    if (message !== prevProps.message) {
       if (message.leadDeleted) {
         alert.success(message.leadDeleted);
+      }
+      if (message.passwordsNotMatch) {
+        alert.error(message.passwordsNotMatch);
       }
     }
   }
